@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Libro;
+use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 {
@@ -36,13 +37,27 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {   
-        $libro = new Libro();
+        /*$libro = new Libro();
         $libro -> tituloLibro = $request->input('tituloLibro');
         $libro -> description = $request->input('description');
         $libro -> categoria = $request->input('categoria');
         $libro -> autores = $request->input('autores');
         $libro -> editorial = $request->input('editorial');
         $libro -> save();
+        return response()->json($libro);*/
+
+        $libro = $request -> File('pdf') -> store('public/PdfLibros');
+        $url = Storage::url($libro);
+        $libro = array(
+            'tituloLibro' => $request->input('tituloLibro'),
+            'description' => $request->input('description'),
+            'categoria' => $request->input('categoria'),
+            'autores' => $request->input('autores'),
+            'editorial' => $request->input('editorial'),
+            'pdf' => $url
+        );
+        $libro = Libro:: create($libro);
+
         return response()->json($libro);
     }
 

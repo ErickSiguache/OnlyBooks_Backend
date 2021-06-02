@@ -21,6 +21,8 @@ class CreateUsuariosTable extends Migration
             $table->string('email');
             $table->string('username');
             $table->string('password');
+            $table->string('ImgPerfil');
+            $table->string('token');
             $table->timestamps();
         });
     }

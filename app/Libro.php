@@ -11,5 +11,5 @@ class Libro extends Eloquent
     protected $collection = 'libros';
 
     protected $fillable = ['tituloLibro','description','categoria', 
-        'autores', 'editorial'];
+        'autores', 'editorial', 'pdf'];
 }

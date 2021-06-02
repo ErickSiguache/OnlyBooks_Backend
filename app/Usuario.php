@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Usuario extends Eloquent
@@ -11,5 +11,5 @@ class Usuario extends Eloquent
     protected $collection = 'usuarios';
 
     protected $fillable = ['nombre','apellido','telefono', 
-        'email', 'username','password'];
+        'email', 'username','password', 'ImgPerfil' ,'token'];
 }
