@@ -40,9 +40,11 @@ class LoginController extends Controller
         //Sirve para extraer los datos de la peticion (Enviados por el front)
         $username = $request -> input('username');
         $password = $request -> input('password');
+        $TipUser = $request -> input('TipUser');
         //Con esto se buscar el Usuario en la Base de datos
         $usuario = Usuario::where('username', $username)
                         ->where('password', $password)
+                        ->where('TipUser', $TipUser)
                         ->get();
         if($usuario -> isEmpty()){
             $respu = 'Usuario no existe';
@@ -53,6 +55,7 @@ class LoginController extends Controller
             ];
             $usuario2 = Usuario::where('username', $username)
                             ->where('password', $password)
+                            ->where('TipUser', $TipUser)
                             ->update($token2, ['upsert' => true]);
             $respu = $token;
         }

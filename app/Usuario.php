@@ -11,5 +11,5 @@ class Usuario extends Eloquent
     protected $collection = 'usuarios';
 
     protected $fillable = ['nombre','apellido','telefono', 
-        'email', 'username','password', 'ImgPerfil' ,'token'];
+        'email', 'username','password', 'ImgPerfil', 'TipUser' ,'token'];
 }

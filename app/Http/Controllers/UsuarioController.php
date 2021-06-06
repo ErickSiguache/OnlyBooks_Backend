@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Usuario;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Str; //Esto es para generar un string aleatorio como token
 
 class UsuarioController extends Controller
 {
@@ -50,6 +50,7 @@ class UsuarioController extends Controller
         $usuario -> email = $request->input('email');
         $usuario -> username = $request->input('username');
         $usuario -> password = $request->input('password');
+        $usuario -> TipUser = $request->input('TipUser');
         $usuario -> ImgPerfil = $request->input('ImgPerfil');
         $usuario -> token = $token;
         $usuario -> save();
