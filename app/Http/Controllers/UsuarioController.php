@@ -87,22 +87,22 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $token)
+    public function update(Request $request, $id)
     {
-        //$usuario = Usuario::find($id);
-        //$usuario->update($request->all());
-        //return ('Usuario actualizado');
+        $usuario = Usuario::find($id);
+        $usuario->update($request->all());
+        return ('Usuario actualizado');
         //Se consulta el 
-        //$usuarios = Usuarios::where('username', $username ) ->get();
-        //return response()->json($usuarios);
+        $usuarios = Usuarios::where('username', $username ) ->get();
+        return response()->json($usuarios);
         //
         //Datos de la base de datos y Se busca el token y su id
         //Se maneja el arreglo con Arr:get()
         //https://styde.net/manejo-de-arreglos-con-laravel/
-        $userUpdate = Usuario::where('token', $token ) ->get();
-        $userID = Arr::get($userUpdate[0], '_id');
-        $Usuario=Usuario::where("token",$token) ->update($request->all());
-        return ('Usuario actualizado');
+        //$userUpdate = Usuario::where('token', $token ) ->get();
+        //$userID = Arr::get($userUpdate[0], '_id');
+        //$Usuario=Usuario::where("token",$token) ->update($request->all());
+        //return ('Usuario actualizado');
     }
 
     /**
